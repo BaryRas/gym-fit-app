@@ -7,8 +7,7 @@ import Exercises from "../components/Exercises";
 import { ExerciseContext } from "../context/ExercisesContext";
 
 function Home() {
-  const { exercises, bodyPart } = useContext(ExerciseContext);
-  console.log(exercises, bodyPart);
+  const { exercises } = useContext(ExerciseContext);
 
   if (exercises !== undefined && exercises !== null) {
     return (

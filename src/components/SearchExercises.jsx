@@ -4,7 +4,8 @@ import { ExerciseContext } from "../context/ExercisesContext";
 import HorizontalScrollbar from "./HorizontalScrollbar";
 
 function SearchExercises() {
-  const { exercises, setExercises } = useContext(ExerciseContext);
+  const { exercises, setFilterExercises, bodyPart } =
+    useContext(ExerciseContext);
   const [search, setSearch] = useState("");
 
   const handleSearch = async () => {
@@ -18,8 +19,7 @@ function SearchExercises() {
       );
 
       setSearch("");
-      setExercises(searchedExercises);
-      console.log(exercises);
+      setFilterExercises(searchedExercises);
     }
   };
 
@@ -65,7 +65,7 @@ function SearchExercises() {
         </Button>
       </Box>
       <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
-        <HorizontalScrollbar />
+        <HorizontalScrollbar bodyParts={bodyPart} />
       </Box>
     </Stack>
   );

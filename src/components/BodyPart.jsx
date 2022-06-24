@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ExerciseContext } from "../context/ExercisesContext";
 import { Stack, Typography } from "@mui/material";
 
-const BodyPart = ({ item, setBodyPart, bodyPart }) => {
+const BodyPart = ({ item }) => {
+  const { exercises, filterExercises, setFilterExercises } =
+    useContext(ExerciseContext);
+
+  const filterBodyPart = (search) => {
+    console.log(search);
+    const searchedExercises = exercises.filter(
+      (exercise) => exercise.bodyPart.toLowerCase() === search
+    );
+    setFilterExercises(searchedExercises);
+  };
+
   return (
     <Stack
       type="button"
@@ -9,7 +21,10 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
       justifyContent="center"
       className="bodyPart-card"
       sx={{
-        borderTop: bodyPart === item ? "4px solid #FF2625" : "",
+        borderTop:
+          filterExercises[0].bodyPart.toLowerCase() === item
+            ? "4px solid #FF2625"
+            : "",
         background: "#fff",
         borderBottomLeftRadius: "20px",
         width: "270px",
@@ -18,7 +33,7 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
         gap: "47px",
       }}
       onClick={() => {
-        setBodyPart(item);
+        filterBodyPart(item);
         window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
       }}
     >

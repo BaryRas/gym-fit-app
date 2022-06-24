@@ -1,39 +1,55 @@
 import React, { createContext, useState, useEffect } from "react";
-import { fetchData } from "../utils/fetchData";
+import { fetchData, exerciseOptions } from "../utils/fetchData";
 
 export const ExerciseContext = createContext();
-export const CatBodyPartsData = createContext();
-export const BodyPart = createContext();
-export const SetBodyPart = createContext();
 
 const ExerciceContextProvider = ({ children }) => {
   const exercisesUrl = "https://exercisedb.p.rapidapi.com/exercises";
   const bodyPartUrl =
     "https://exercisedb.p.rapidapi.com/exercises/bodyPartList";
   const [exercises, setExercises] = useState();
-  const [bodyPart, setbodyPart] = useState();
+  const [bodyPart, setBodyPart] = useState();
 
+  /**
+   * Especialy for exercises component
+   */
+  const [filterExercises, setFilterExercises] = useState();
+
+  /**
+   * Fetch all exercises
+   * Exercises are shown in the list of exercises and may change in the future
+   */
   useEffect(() => {
     const exercisesData = async () => {
-      const fetchExercisesData = await fetchData(exercisesUrl);
+      const fetchExercisesData = await fetchData(exercisesUrl, exerciseOptions);
       setExercises([...fetchExercisesData]);
+      setFilterExercises([...fetchExercisesData]);
     };
     exercisesData();
-    console.log(exercises);
   }, []);
 
+  /**
+   * Fetch body part data for the horizontal scroll
+   * Nedd those to filter exercises data
+   */
   useEffect(() => {
     const bodyPartData = async () => {
-      const fetchExercisesData = await fetchData(bodyPartUrl);
-      setbodyPart([...fetchExercisesData]);
+      const fetchExercisesData = await fetchData(bodyPartUrl, exerciseOptions);
+      setBodyPart([...fetchExercisesData]);
     };
     bodyPartData();
-    console.log(bodyPart);
   }, []);
 
   return (
     <ExerciseContext.Provider
-      value={{ exercises, setExercises, bodyPart, setbodyPart }}
+      value={{
+        exercises,
+        setExercises,
+        bodyPart,
+        setBodyPart,
+        filterExercises,
+        setFilterExercises,
+      }}
     >
       {children}
     </ExerciseContext.Provider>
