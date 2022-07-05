@@ -47,7 +47,10 @@ const HorizontalScrollbar = (props) => {
               key={item.id || item}
               itemId={item.id || item}
               title={item.id || item}
-              m="0 40px"
+              sx={{
+                width: "370px",
+                gap: "47px",
+              }}
             >
               <ExerciseCard exercise={item} />
             </Box>

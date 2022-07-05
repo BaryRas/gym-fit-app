@@ -1,47 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Stack, Typography } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Chip,
+} from "@mui/material";
 
 const ExerciseCard = ({ exercise }) => (
-  <Link className="exercise-card" to={`/exercise/${exercise.id}`}>
-    <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
-    <Stack direction="row">
-      <Button
-        sx={{
-          ml: "21px",
-          color: "#fff",
-          background: "#FFA9A9",
-          fontSize: "14px",
-          borderRadius: "20px",
-          textTransform: "capitalize",
-        }}
-      >
-        {exercise.bodyPart}
-      </Button>
-      <Button
-        sx={{
-          ml: "21px",
-          color: "#fff",
-          background: "#FCC757",
-          fontSize: "14px",
-          borderRadius: "20px",
-          textTransform: "capitalize",
-        }}
-      >
-        {exercise.target}
-      </Button>
-    </Stack>
-    <Typography
-      ml="21px"
-      color="#000"
-      fontWeight="bold"
-      sx={{ fontSize: { lg: "24px", xs: "20px" } }}
-      mt="11px"
-      pb="10px"
-      textTransform="capitalize"
+  <Link to={`/exercise/${exercise.id}`} style={{ textDecoration: "none" }}>
+    <Card
+      sx={{ maxWidth: 345, borderTop: "1px solid #FF2625" }}
+      variant="elevation0"
     >
-      {exercise.name}
-    </Typography>
+      <CardMedia
+        component="img"
+        alt={exercise.name}
+        height="326"
+        image={exercise.gifUrl}
+      />
+      <CardActions>
+        <Chip
+          label={exercise.bodyPart}
+          sx={{ bgcolor: "#FFFC40" }}
+          variant="outlined"
+        />
+        <Chip
+          label={exercise.target}
+          sx={{ bgcolor: "#B30909" }}
+          variant="outlined"
+        />
+      </CardActions>
+      <CardContent>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          textDecoration="none"
+        >
+          {exercise.name}
+        </Typography>
+      </CardContent>
+    </Card>
   </Link>
 );
 

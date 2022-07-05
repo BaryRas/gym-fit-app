@@ -1,0 +1,38 @@
+.section {
+  width: 100vw;
+  height: 90vh;
+  background-image: url("../../assets/images/bodybuilder.jpg");
+  background-size: cover;
+  background-position: center;
+  /* margin-bottom: 150px; */
+}
+
+.container {
+  height: 100%;
+  z-index: 100;
+  position: relative;
+}
+
+.content {
+  height: 100%;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 90vh;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+.card-banner {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+}
+
+.navbar {
+  z-index: 100;
+}

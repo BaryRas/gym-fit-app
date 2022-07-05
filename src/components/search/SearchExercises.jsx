@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
-import { ExerciseContext } from "../context/ExercisesContext";
-import HorizontalScrollbar from "./HorizontalScrollbar";
+import { ExerciseContext } from "../../context/ExercisesContext";
+import HorizontalScrollbar from "../HorizontalScrollbar";
 
 function SearchExercises() {
   const { exercises, setFilterExercises, bodyPart } =
@@ -26,12 +26,15 @@ function SearchExercises() {
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography
-        fontWeight={700}
+        fontWeight={400}
         sx={{ fontSize: { lg: "44px", xs: "30px" } }}
         mb="49px"
+        fontFamily="Leckerli One"
+        color="#FF2625"
         textAlign="center"
       >
-        Awesome Exercises You <br /> Should Know
+        Let's begin ,<br />
+        Search your exercise
       </Typography>
       <Box position="relative" mb="72px">
         <TextField

@@ -6,6 +6,7 @@ import { fetchData, exerciseOptions } from "../utils/fetchData";
 import Detail from "../components/Detail";
 import ExerciseVideos from "../components/ExerciseVideos";
 import SimilarExercises from "../components/SimilarExercises";
+import Navbar from "../components/header/Navbar";
 
 const ExerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState({});
@@ -30,14 +31,17 @@ const ExerciseDetail = () => {
   if (!exerciseDetail) return <div>No Data</div>;
 
   return (
-    <Box sx={{ mt: { lg: "96px", xs: "60px" } }}>
-      <Detail exerciseDetail={exerciseDetail} />
-      <ExerciseVideos exerciseDetail={exerciseDetail} />
-      <SimilarExercises
-        exerciseDetailTarget={exerciseDetail.target}
-        exerciseDetailEquipment={exerciseDetail.equipment}
-      />
-    </Box>
+    <div>
+      <Navbar />
+      <Box sx={{ mt: { lg: "96px", xs: "60px" } }}>
+        <Detail exerciseDetail={exerciseDetail} />
+        <ExerciseVideos exerciseDetail={exerciseDetail} />
+        <SimilarExercises
+          exerciseDetailTarget={exerciseDetail.target}
+          exerciseDetailEquipment={exerciseDetail.equipment}
+        />
+      </Box>
+    </div>
   );
 };
 

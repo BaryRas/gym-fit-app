@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Box } from "@mui/material";
-import HeroBanner from "../components/HeroBanner";
-import SearchExercises from "../components/SearchExercises";
+import HeroBanner from "../components/header/HeroBanner";
+import SearchExercises from "../components/search/SearchExercises";
 import Loader from "../components/Loader";
 import Exercises from "../components/Exercises";
 import { ExerciseContext } from "../context/ExercisesContext";
